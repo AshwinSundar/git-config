@@ -1,11 +1,17 @@
 [core]
-  pager = delta
+  ; pager = delta
+  ; pager = diff-so-fancy 
+
+; another pager option, must be configured here instead
+[diff]
+  external = difft
 
 [interactive]
   diffFilter = delta --color-only
 
 [delta]
   navigate = true    # use n and N to move between diff sections
+  line-numbers = true
 
   # delta detects terminal colors automatically; set one of these to disable auto-detection
   # dark = true
@@ -13,11 +19,15 @@
 
 [merge]
   conflictstyle = zdiff3[user]
+
+[user]
   name = Ashwin Sundar
   email = ashiundar@gmail.com
+
 [alias]
 	diffwd = diff
 	branch-note = "!git config branch.$(git symbolic-ref --short HEAD).note $( if [ $# -gt 0 ]; then $1; fi)"
   branch-latest = "branch --sort -committerdate"
+
 [push]
 	autoSetupRemote = 1
